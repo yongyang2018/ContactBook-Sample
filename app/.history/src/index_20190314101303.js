@@ -160,17 +160,17 @@ window.addEventListener("load", function() {
         return true;   
     }else{
       alert("请输入大写英文字母");   
-      return; 
+      return false; 
     }    
   });
 
-  $("#count").blur(function(){
-    var value =document.getElementById('count').value;
-    if (/^[0-9]+$/.test(value)){  
+  $("#codes").blur(function(){
+    var value =document.getElementById('codes').value;
+    if (/^[A-Z]+$/.test(value)){  
         return true;   
     }else{
-      alert("请输入整数");   
-      return; 
+      alert("请输入大写英文字母");   
+      return false; 
     }    
   });
   App.start();

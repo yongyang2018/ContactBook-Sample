@@ -18,6 +18,18 @@ const App = {
         metaCoinArtifact.abi,
         deployedNetwork.address,
       );
+      
+
+      $("#codes").blur(function(){
+        var result = str.match(/^.*[a-z]+.*$/);
+        if(result==null){
+          return true;
+        }else{
+          alert(123);
+          return true;
+        } 
+        
+      });
 
       // get accounts
       const accounts = await web3.eth.getAccounts();
@@ -154,24 +166,5 @@ window.addEventListener("load", function() {
     );
   }
 
-  $("#codes").blur(function(){
-    var value =document.getElementById('codes').value;
-    if (/^[A-Z]+$/.test(value)){  
-        return true;   
-    }else{
-      alert("请输入大写英文字母");   
-      return; 
-    }    
-  });
-
-  $("#count").blur(function(){
-    var value =document.getElementById('count').value;
-    if (/^[0-9]+$/.test(value)){  
-        return true;   
-    }else{
-      alert("请输入整数");   
-      return; 
-    }    
-  });
   App.start();
 });

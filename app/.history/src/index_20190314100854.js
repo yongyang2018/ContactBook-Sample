@@ -160,17 +160,7 @@ window.addEventListener("load", function() {
         return true;   
     }else{
       alert("请输入大写英文字母");   
-      return; 
-    }    
-  });
-
-  $("#count").blur(function(){
-    var value =document.getElementById('count').value;
-    if (/^[0-9]+$/.test(value)){  
-        return true;   
-    }else{
-      alert("请输入整数");   
-      return; 
+      return false; 
     }    
   });
   App.start();

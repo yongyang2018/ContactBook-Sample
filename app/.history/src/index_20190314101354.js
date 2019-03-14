@@ -160,7 +160,7 @@ window.addEventListener("load", function() {
         return true;   
     }else{
       alert("请输入大写英文字母");   
-      return; 
+      return false; 
     }    
   });
 
@@ -169,8 +169,8 @@ window.addEventListener("load", function() {
     if (/^[0-9]+$/.test(value)){  
         return true;   
     }else{
-      alert("请输入整数");   
-      return; 
+      alert("请输入大写英文字母");   
+      return false; 
     }    
   });
   App.start();
