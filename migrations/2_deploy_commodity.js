@@ -1,5 +1,5 @@
-const Commodity = artifacts.require("Commodity");
+const ContactBookDAPP = artifacts.require("ContactBookDAPP");
 
 module.exports = function(deployer) {
-  deployer.deploy(Commodity);
+  deployer.deploy(ContactBookDAPP);
 };
