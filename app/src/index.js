@@ -1,6 +1,5 @@
 import "../css/index.css";
 import Web3 from "web3";
-import metaCoinArtifact from "../../build/contracts/Commodity.json";
 
 const App = {
   web3: null,
@@ -97,9 +96,9 @@ const App = {
             var result = await selectAll(x).call();
             var stats='';
             if(result[3]==1){
-              stats='上架';
+              stats='男';
             }else{
-              stats='下架';
+              stats='女';
             }
             var html=' <tr>'+
               ' <td><input type="checkbox" style="width: 0px;" id="checkbox"  name="checkbox" data-id="'+result[4]+'"></td>'+
@@ -156,10 +155,10 @@ window.addEventListener("load", function() {
 
   $("#codes").blur(function(){
     var value =document.getElementById('codes').value;
-    if (/^[A-Z]+$/.test(value)){  
+    if (/^[0-9]+$/.test(value)){  
         return true;   
     }else{
-      alert("请输入大写英文字母");   
+      alert("请输入合法的手机号码");   
       return; 
     }    
   });
@@ -169,8 +168,8 @@ window.addEventListener("load", function() {
     if (/^[0-9]+$/.test(value)){  
         return true;   
     }else{
-      alert("请输入整数");   
-      return; 
+      //alert("请输入整数");   
+      //return; 
     }    
   });
   App.start();
