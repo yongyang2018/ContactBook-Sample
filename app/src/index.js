@@ -156,7 +156,7 @@ window.addEventListener("load", function() {
 
   $("#codes").blur(function(){
     var value =document.getElementById('codes').value;
-    if (/^[0-9]+$/.test(value)){  
+    if((/^1[3|4|5|8][0-9]\d{8}$/.test(value))){ 
         return true;   
     }else{
       alert("请输入合法的手机号码");   
@@ -166,12 +166,13 @@ window.addEventListener("load", function() {
 
   $("#count").blur(function(){
     var value =document.getElementById('count').value;
-    if (/^[0-9]+$/.test(value)){  
-        return true;   
-    }else{
-      //alert("请输入整数");   
-      //return; 
-    }    
+    var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); 
+    if (!reg.test(value)) {
+      alert("请输入合法的邮箱地址");   
+      return; 
+    } else {
+      return true;
+    }
   });
   App.start();
 });
