@@ -39,9 +39,9 @@ const App = {
         var result = await selectAll(x).call();
         var stats='';
         if(result[3]==1){
-          stats='上架';
+          stats='男';
         }else{
-          stats='下架';
+          stats='女';
         }
         html+=' <tr>'+
           ' <td><input type="checkbox" style="width: 0px;" id="checkbox"  name="checkbox" data-id="'+result[4]+'"></td>'+
