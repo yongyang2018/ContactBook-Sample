@@ -59,9 +59,9 @@ const App = {
 
   save: async function(){
     const { web3 } = this;
-    //商品代码
+    //手机号码
     var codes=document.getElementById('codes').value
-    //名称
+    //
     var name=document.getElementById('name').value
     //数量
     var count=document.getElementById('count').value
@@ -72,14 +72,15 @@ const App = {
       return 
     }
     const { saveinfo } = this.meta.methods;
-    await saveinfo(name,codes,count,status).send({from:this.account, gas: 3141592},function(err,result){
-      this.start();
+    await saveinfo(name,codes,count,status).send({from:this.account, gas: 3141592},function(){
+    location.reload();
     });
+    
   },
 
   selectOne: async function() {
     const { web3 } = this;
-    //商品编号
+
     var code=document.getElementById('code').value
     if(code==''){
       this.start();
@@ -98,9 +99,9 @@ const App = {
             var result = await selectAll(x).call();
             var stats='';
             if(result[3]==1){
-              stats='上架';
+              stats='男';
             }else{
-              stats='下架';
+              stats='女';
             }
             var html=' <tr>'+
               ' <td><input type="checkbox" style="width: 0px;" id="checkbox"  name="checkbox" data-id="'+result[4]+'"></td>'+
