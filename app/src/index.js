@@ -39,9 +39,9 @@ const App = {
         var result = await selectAll(x).call();
         var stats='';
         if(result[3]==1){
-          stats='上架';
+          stats='男';
         }else{
-          stats='下架';
+          stats='女';
         }
         html+=' <tr>'+
           ' <td><input type="checkbox" style="width: 0px;" id="checkbox"  name="checkbox" data-id="'+result[4]+'"></td>'+
@@ -61,11 +61,11 @@ const App = {
     const { web3 } = this;
     //手机号码
     var codes=document.getElementById('codes').value
-    //
+    //名称
     var name=document.getElementById('name').value
-    //数量
+    //邮件
     var count=document.getElementById('count').value
-    //上下架
+    //性别
     var status=document.getElementById('switch').value
     if(code==''||name==''||count==''){
       alert("Parameter cannot be null!");
@@ -155,5 +155,26 @@ window.addEventListener("load", function() {
       new Web3.providers.HttpProvider("http://127.0.0.1:7545"),
     );
   }
+
+  $("#codes").blur(function(){
+    var value =document.getElementById('codes').value;
+    if (/^[A-Z]+$/.test(value)){  
+        return true;   
+    }else{
+      alert("请输入大写英文字母");   
+      return; 
+    }    
+  });
+
+  $("#count").blur(function(){
+    var value =document.getElementById('count').value;
+    if (/^[0-9]+$/.test(value)){  
+        return true;   
+    }else{
+      alert("请输入整数");   
+      return; 
+    }    
+  });
+
   App.start();
 });
