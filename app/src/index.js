@@ -1,5 +1,6 @@
 import "../css/index.css";
 import Web3 from "web3";
+import metaCoinArtifact from "../../build/contracts/ContactBookDAPP.json";
 
 const App = {
   web3: null,
@@ -8,7 +9,6 @@ const App = {
 
   start: async function() {
     const { web3 } = this;
-
 
     try {
       // get contract instance
@@ -39,9 +39,9 @@ const App = {
         var result = await selectAll(x).call();
         var stats='';
         if(result[3]==1){
-          stats='男';
+          stats='上架';
         }else{
-          stats='女';
+          stats='下架';
         }
         html+=' <tr>'+
           ' <td><input type="checkbox" style="width: 0px;" id="checkbox"  name="checkbox" data-id="'+result[4]+'"></td>'+
@@ -72,8 +72,9 @@ const App = {
       return 
     }
     const { saveinfo } = this.meta.methods;
-    await saveinfo(name,codes,count,status).send({ from: this.account ,gas: 3141592});
-    this.start();
+    await saveinfo(name,codes,count,status).send({from:this.account, gas: 3141592},function(err,result){
+      this.start();
+    });
   },
 
   selectOne: async function() {
@@ -97,9 +98,9 @@ const App = {
             var result = await selectAll(x).call();
             var stats='';
             if(result[3]==1){
-              stats='男';
+              stats='上架';
             }else{
-              stats='女';
+              stats='下架';
             }
             var html=' <tr>'+
               ' <td><input type="checkbox" style="width: 0px;" id="checkbox"  name="checkbox" data-id="'+result[4]+'"></td>'+
@@ -153,26 +154,5 @@ window.addEventListener("load", function() {
       new Web3.providers.HttpProvider("http://127.0.0.1:7545"),
     );
   }
-
-  $("#codes").blur(function(){
-    var value =document.getElementById('codes').value;
-    if((/^1[3|4|5|8][0-9]\d{8}$/.test(value))){ 
-        return true;   
-    }else{
-      alert("请输入合法的手机号码");   
-      return; 
-    }    
-  });
-
-  $("#count").blur(function(){
-    var value =document.getElementById('count').value;
-    var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); 
-    if (!reg.test(value)) {
-      alert("请输入合法的邮箱地址");   
-      return; 
-    } else {
-      return true;
-    }
-  });
   App.start();
 });
