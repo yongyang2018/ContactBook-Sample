@@ -167,6 +167,7 @@ window.addEventListener("load", function() {
   });
 
   $("#count").blur(function(){
+    var value =document.getElementById('count').value;
     var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); 
     if (!reg.test(value)) {
       alert("请输入合法的邮箱地址");   
