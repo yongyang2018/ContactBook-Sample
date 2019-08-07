@@ -17,7 +17,8 @@ contract owned {
      * 判断当前合约调用者是否是合约的所有者
      */
     modifier onlyOwner {
-        require (msg.sender == owner);
+        require( msg.sender == owner,
+        "sender is not authorized");
         _;
     }
  
@@ -66,7 +67,8 @@ contract ContactBookDAPP is owned{
     }
  
     //查询数据
-    function selectAll(uint key) public view returns (string memory name ,string memory telephone,string memory email,uint8 gender,uint id){
+    function selectAll(uint key) public view returns (string memory name ,string memory telephone,
+    string memory email,uint8 gender,uint id){
         name=commOf[key].name;
         telephone=commOf[key].telephone;
         email=commOf[key].email;
@@ -77,7 +79,8 @@ contract ContactBookDAPP is owned{
     }
 
     //两个string比较
-    function utilCompareInternal(string memory a, string memory b) internal view returns (bool succ) {
+    function utilCompareInternal(string memory a, string memory b) 
+    internal pure returns (bool succ) {
         if (bytes(a).length != bytes(b).length) {
             return false;
         }
