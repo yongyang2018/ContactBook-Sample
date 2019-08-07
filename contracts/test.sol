@@ -4,7 +4,6 @@ contract test {
 
     uint[] len;
 
-
     function add() public {
         len.push(1);
     }
