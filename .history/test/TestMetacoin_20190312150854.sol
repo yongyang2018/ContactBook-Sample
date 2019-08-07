@@ -17,6 +17,7 @@ contract TestMetacoin {
         );
     }
 
+
     function testInitialBalanceWithNewMetaCoin() public {
         MetaCoin meta = new MetaCoin();
 
